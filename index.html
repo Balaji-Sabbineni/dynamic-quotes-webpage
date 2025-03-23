@@ -4,38 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quote</title>
-    <style>
-        body{
-            font-family:'Gill Sans', 'Gill Sans MT';
-        }
-        #parent{
-            margin-left: 20%;
-            margin-top: 30vh;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            border-radius: 20px;
-            max-width: 60%;
-        }
-        #btn{
-            background-color: rgb(146, 224, 81);
-            color: black;
-            border-radius: 15px;
-            height: 40px;
-            width: fit-content;
-            transition: transform 0.1s ease-in-out;
-        }
-        #btn:hover {
-            transform: scale(1.1);
-        }
-        #text{
-            font-style:normal;
-            font-size: 32px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="parent">
@@ -43,34 +12,7 @@
         <p id="author"></p>
         <button id="btn">New Quote</button>
     </div>
-
-
-    <script>
-        let quotes = [];
-        let text = document.getElementById('text');
-        let author = document.getElementById('author');
-        let btn = document.getElementById('btn');
-        btn.addEventListener('click',()=> displayNewQuote());
-        
-        
-        function displayNewQuote(){
-            fetchQuotes()
-        }
-        
-        async function fetchQuotes() {
-            let url = 'https://jacintodesign.github.io/quotes-api/data/quotes.json';
-            try{
-                let response = await fetch(url);
-                quotes = await response.json();
-                let indx = Math.floor(Math.random()*quotes.length);
-                let obj = quotes[indx];
-                text.textContent = obj.text;
-                author.textContent = `- ${obj.author}`;
-            }catch (error){
-                console.log(error)
-            }
-        }
-        fetchQuotes();
-    </script>
+    
+    <script src="script.js"></script>
 </body>
 </html>
